@@ -1,0 +1,12 @@
+C:\Users\seans\source\repos\adventofcode\2021\DayOne\bin\Debug\net6.0\DayOne.deps.json
+C:\Users\seans\source\repos\adventofcode\2021\DayOne\bin\Debug\net6.0\DayOne.dll
+C:\Users\seans\source\repos\adventofcode\2021\DayOne\bin\Debug\net6.0\ref\DayOne.dll
+C:\Users\seans\source\repos\adventofcode\2021\DayOne\bin\Debug\net6.0\DayOne.pdb
+C:\Users\seans\source\repos\adventofcode\2021\DayOne\obj\Debug\net6.0\DayOne.csproj.AssemblyReference.cache
+C:\Users\seans\source\repos\adventofcode\2021\DayOne\obj\Debug\net6.0\DayOne.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\seans\source\repos\adventofcode\2021\DayOne\obj\Debug\net6.0\DayOne.AssemblyInfoInputs.cache
+C:\Users\seans\source\repos\adventofcode\2021\DayOne\obj\Debug\net6.0\DayOne.AssemblyInfo.cs
+C:\Users\seans\source\repos\adventofcode\2021\DayOne\obj\Debug\net6.0\DayOne.csproj.CoreCompileInputs.cache
+C:\Users\seans\source\repos\adventofcode\2021\DayOne\obj\Debug\net6.0\DayOne.dll
+C:\Users\seans\source\repos\adventofcode\2021\DayOne\obj\Debug\net6.0\ref\DayOne.dll
+C:\Users\seans\source\repos\adventofcode\2021\DayOne\obj\Debug\net6.0\DayOne.pdb
