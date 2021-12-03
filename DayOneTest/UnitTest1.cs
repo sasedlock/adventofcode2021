@@ -46,4 +46,34 @@ public class UnitTest1
         int result = Comparer.CountIncreasesInArray(input);
         Assert.AreEqual(2, result);
     }
+
+ [TestMethod]
+    public void ComparerCountsExpectedIncreasesFromTestInput()
+    {
+        int[] input = { 199,
+                200,
+                208,
+                210,
+                200,
+                207,
+                240,
+                269,
+                260,
+                263};
+
+        int result = Comparer.CountIncreasesInArray(input);
+        Assert.AreEqual(7, result);
+    }
+
+    [TestMethod]
+    public void ComparerReturnsZeroIfArrayEmpty(){
+        int[] input = {};
+        Assert.AreEqual(0, Comparer.CountIncreasesInArray(input));
+    }
+
+    [TestMethod]
+    public void ComparerReturnsZeroIfArrayHasOnlyOneElement(){
+        int[] input = {1};
+        Assert.AreEqual(0, Comparer.CountIncreasesInArray(input));
+    }
 }

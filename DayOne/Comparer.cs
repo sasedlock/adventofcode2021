@@ -6,6 +6,18 @@ public static class Comparer
     }
 
     public static int CountIncreasesInArray(int[] input) {
-        return 1;
+        int result = 0;
+        
+        if (input.Length == 0 || input.Length == 1) {
+            return result;
+        }
+
+        for (int i = 1; i < input.Length; i++) {
+            if (IsGreaterThan(input[i-1],input[i])) {
+                result++;
+            }
+        }
+
+        return result;
     }
 }
