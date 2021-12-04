@@ -9,16 +9,7 @@ public class DayOneUnitTests
     [TestMethod]
     public void ComparerReturnsTrueWhenSecondParameterIsGreaterThan()
     {
-        int[] input = { 199,
-                200,
-                208,
-                210,
-                200,
-                207,
-                240,
-                269,
-                260,
-                263};
+        int[] input = { 199,200,208,210,200,207,240,269,260,263};
 
         int input1 = 1;
         int input2 = 2;
