@@ -58,11 +58,11 @@ public class DayOneUnitTests
     }
 
     [TestMethod]
-    public void ComparerCountsExpectedIncreasesFromTestInput()
+    public void ComparerCountsExpectedThreeMeasurementIncreasesFromTestInput()
     {
         int[] input = { 199,200,208,210,200,207,240,269,260,263};
 
-        int result = Comparer.CountIncreasesInArray(input);
-        Assert.AreEqual(7, result);
+        int result = Comparer.CountThreeMeasurementIncreasesInArray(input);
+        Assert.AreEqual(5, result);
     }
 }
