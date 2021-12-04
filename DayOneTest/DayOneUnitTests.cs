@@ -4,7 +4,7 @@ using DayOne;
 namespace DayOneTest;
 
 [TestClass]
-public class UnitTest1
+public class DayOneUnitTests
 {
     [TestMethod]
     public void ComparerReturnsTrueWhenSecondParameterIsGreaterThan()
