@@ -30,17 +30,6 @@ public class DayOneUnitTests
     [TestMethod]
     public void ComparerCountsExpectedIncreasesWhenAllIncreasing()
     {
-        // int[] input = { 199,
-        //         200,
-        //         208,
-        //         210,
-        //         200,
-        //         207,
-        //         240,
-        //         269,
-        //         260,
-        //         263};
-
         int[] input = {1,2,3};
 
         int result = Comparer.CountIncreasesInArray(input);
