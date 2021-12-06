@@ -35,3 +35,49 @@ public static class Comparer
         return result;
     }
 }
+
+public static class SubmarineCalculator
+{
+    public static int CalculateDepth(int initialDepth, string direction, int movement) {
+        int newDepth = initialDepth;
+
+        if (direction == "down") {
+            newDepth = initialDepth + movement;
+        } else if (direction == "up") {
+            newDepth = initialDepth - movement;
+        }
+
+        return newDepth;
+    }
+
+    public static int CalculateHorizontalPosition(int initialPosition, int movement) {
+        return initialPosition + movement;
+    }
+
+    public static (int, int) CalculateNewPosition((int x, int y) position, string move) {
+        string[] movement = move.Split(" ");
+        string movementDirection = movement[0];
+        int movementAmount = int.Parse(movement[1]);
+
+        (int x, int y) newPosition = position;
+
+        if (movementDirection == "forward") {
+            newPosition.x = CalculateHorizontalPosition(position.x, movementAmount);
+        } else {
+            newPosition.y = CalculateDepth(position.y, movementDirection, movementAmount);
+        }
+
+        return newPosition;
+    }
+
+    public static (int, int) CalculateTotalTravel(string[] movements) {
+        (int, int) finalPosition = (0,0);
+        (int, int) startingPosition;
+
+        foreach(string movement in movements) {
+            finalPosition = CalculateNewPosition(finalPosition, movement);
+        }
+
+        return finalPosition;
+    }
+}
