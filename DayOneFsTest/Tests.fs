@@ -52,3 +52,59 @@ type TestClass () =
         let expected = 1706
         let actual = Comparer.CountThreeMeasurementIncreases inputList
         Assert.AreEqual(expected, actual)
+
+    [<TestMethod>]
+    member this.CalculateDepthCalculatesDepthCorrectlyWhenMovingDown () =
+        let initialDepth = 0
+        let direction = "down"
+        let movement = 5
+
+        let expected = 5
+        let actual = SubmarineCalculator.CalculateDepth initialDepth direction movement
+        Assert.AreEqual(expected, actual)
+
+    [<TestMethod>]
+    member this.CalculateDepthCalculatesDepthCorrectlyWhenMovingUp () =
+        let initialDepth : int = 3
+        let direction : string = "up"
+        let movement : int = 2
+
+        let expected : int = 1;
+        let actual = SubmarineCalculator.CalculateDepth initialDepth direction movement
+        Assert.AreEqual(expected, actual)
+
+    [<TestMethod>]
+    member this.CalculateHorizontalPositionCalculatesCorrectlyWhenMovingForwardAtLeastOneSpace () = 
+        let initialPosition = 0
+        let movement = 3
+
+        let expected = 3
+        let actual = SubmarineCalculator.CalculateHorizontalPosition initialPosition movement
+        Assert.AreEqual(expected, actual)
+
+    [<TestMethod>]
+    member this.CalculateNewPositionCalculatesDownMovementAsExpected () =
+        let position = (0,0)
+        let move : string = "down 3"
+
+        let expected = (0,3)
+        let actual = SubmarineCalculator.CalculateNewPosition position move
+        Assert.AreEqual(expected, actual)
+
+    [<TestMethod>]
+    member this.CalculateNewPositionCalculatesUpMovementAsExpected () =
+        let position = (0,6)
+        let move : string = "up 3"
+
+        let expected = (0,3)
+        let actual = SubmarineCalculator.CalculateNewPosition position move
+        Assert.AreEqual(expected, actual)
+
+    [<TestMethod>]
+    member this.CalculateNewPositionCalculatesForwardMovementAsExpected () =
+        let position = (0,6)
+        let move : string = "forward 3"
+
+        let expected = (3,6)
+        let actual = SubmarineCalculator.CalculateNewPosition position move
+        Assert.AreEqual(expected, actual)

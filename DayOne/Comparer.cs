@@ -72,7 +72,6 @@ public static class SubmarineCalculator
 
     public static (int, int) CalculateTotalTravel(string[] movements) {
         (int, int) finalPosition = (0,0);
-        (int, int) startingPosition;
 
         foreach(string movement in movements) {
             finalPosition = CalculateNewPosition(finalPosition, movement);
