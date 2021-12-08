@@ -128,3 +128,13 @@ type TestClass () =
         let (finalx, finaly) = SubmarineCalculator.CalculateTotalTravel inputList
         let actual = finalx * finaly
         Assert.AreEqual(expected, actual)
+
+    [<TestMethod>]
+    member this.CalculateTotalTravelWithAimCalculatesAsExpected () =
+        let input = [|"forward 5";"down 5";"forward 8";"up 3";"down 8";"forward 2"|]
+        let inputList = input |> Array.toList
+
+        let expected = 900
+        let (finalx, finaly, finalAim) = SubmarineCalculator.CalculateTotalTravelWithAim inputList
+        let actual = finalx * finaly
+        Assert.AreEqual(expected, actual)

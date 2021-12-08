@@ -45,8 +45,29 @@ module SubmarineCalculator =
         let newYPosition = CalculateDepth yPosition movementDirection movementAmount
         (newXPosition, newYPosition)
 
+    let CalculateNewPositionWithAim (position : (int * int * int)) (movement : string) : int * int * int = 
+        let move = movement.Split ' ' 
+        let movementDirection = move.[0]
+        let movementAmount = move.[1] |> int
+
+        let (xPosition, yPosition, aim) = position
+        let newPosition = 
+            if movementDirection = "forward" then
+                (xPosition + movementAmount, yPosition + aim * movementAmount, aim)
+            elif movementDirection = "up" then
+                (xPosition, yPosition, aim - movementAmount)
+            else 
+                (xPosition, yPosition, aim + movementAmount)
+        newPosition
+
     let CalculateTotalTravel (movements : list<string>) : int * int = 
         let mutable finalPosition = (0,0)
         for movement in movements do
             finalPosition <- CalculateNewPosition finalPosition movement
+        finalPosition
+
+    let CalculateTotalTravelWithAim (movements : list<string>) : int * int * int= 
+        let mutable finalPosition = (0,0,0)
+        for movement in movements do
+            finalPosition <- CalculateNewPositionWithAim finalPosition movement
         finalPosition
