@@ -43,5 +43,10 @@ module SubmarineCalculator =
 
         let newXPosition = if movementDirection = "forward" then CalculateHorizontalPosition xPosition movementAmount else xPosition
         let newYPosition = CalculateDepth yPosition movementDirection movementAmount
-
         (newXPosition, newYPosition)
+
+    let CalculateTotalTravel (movements : list<string>) : int * int = 
+        let mutable finalPosition = (0,0)
+        for movement in movements do
+            finalPosition <- CalculateNewPosition finalPosition movement
+        finalPosition
