@@ -26,3 +26,4 @@ msbuild.wrn
 
 .ionide
 .ionide/*
+.fake
