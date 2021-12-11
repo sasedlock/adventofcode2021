@@ -71,3 +71,35 @@ module SubmarineCalculator =
         for movement in movements do
             finalPosition <- CalculateNewPositionWithAim finalPosition movement
         finalPosition
+
+    let ProcessDiagnosticReport (diagnosticReport : list<string>) : int = 
+        let diagnosticReportLength = diagnosticReport.Length
+        
+        let halfDiagnosticLength = 
+            if diagnosticReportLength % 2 = 0 then
+                diagnosticReportLength / 2
+            else  
+                (diagnosticReportLength + 1) / 2
+
+        let mutable gammaBinaryString = "0b"
+        let mutable epsilonBinaryString = "0b"
+        let lengthOfEachElement = diagnosticReport.Head.Length
+
+        for i in 0..lengthOfEachElement - 1 do 
+            let mutable columnSum = 0
+            for element in diagnosticReport do
+                let cellValueChar = element.[i]
+                let cellValue = cellValueChar |> sprintf "%c" |> int
+                columnSum <- columnSum + cellValue
+            if columnSum > halfDiagnosticLength then 
+                gammaBinaryString <- gammaBinaryString + "1"
+                epsilonBinaryString <- epsilonBinaryString + "0"
+            else 
+                gammaBinaryString <- gammaBinaryString + "0"
+                epsilonBinaryString <- epsilonBinaryString + "1"
+            columnSum <- 0
+
+        printfn "%s" gammaBinaryString
+        let gammaInt = gammaBinaryString |> int
+        let epsilonInt = epsilonBinaryString |> int
+        gammaInt * epsilonInt

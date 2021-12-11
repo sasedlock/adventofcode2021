@@ -148,3 +148,13 @@ type TestClass () =
         let (finalx, finaly, finalAim) = SubmarineCalculator.CalculateTotalTravelWithAim inputList
         let actual = finalx * finaly
         Assert.AreEqual(expected, actual)
+
+    [<TestMethod>]
+    // Need a method that takes in a collection of numbers, in binary form, and for each position
+    // determine the most common bit number
+    member this.CalculateGammaRateReturnsTheCorrectNumberOfBits () =
+        let input = ["00100";"11110";"10110";"10111";"10101";"01111";"00111";"11100";"10000";"11001";"00010";"01010"]
+        
+        let expected = 198
+        let actual = SubmarineCalculator.ProcessDiagnosticReport input
+        Assert.AreEqual(expected, actual)
