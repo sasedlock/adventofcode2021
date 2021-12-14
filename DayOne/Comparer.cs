@@ -82,31 +82,36 @@ public static class SubmarineCalculator
 
     public static int CalculateOxygenGeneratorRating(string[] diagnosticReport) {
         string[] oxygenRatingArray = diagnosticReport;
+        int indexToCheck = 0;
+        int lengthToNotExceed = oxygenRatingArray.FirstOrDefault().Length;
 
-        while (oxygenRatingArray.Length > 1) {
+        while (oxygenRatingArray.Length > 1 && indexToCheck < lengthToNotExceed) {
             List<string> ListOfOnes = new List<string>();
             List<string> ListOfZeros = new List<string>();
 
-            int indexToCheck = 0;
+            Console.WriteLine($"Using index {indexToCheck} to check");
 
             foreach(string row in oxygenRatingArray) {
+                Console.WriteLine(row);
                 if (row[indexToCheck] == 1) {
                     ListOfOnes.Add(row);
                 } else {
                     ListOfZeros.Add(row);
                 }
-
-                int listOfOnesCount = ListOfOnes.Count;
-                int listOfZerosCount = ListOfZeros.Count;
-
-                if (listOfOnesCount >= listOfZerosCount) {
-                    oxygenRatingArray = ListOfOnes.ToArray();
-                } else {
-                    oxygenRatingArray = ListOfZeros.ToArray();
-                }
-
-                indexToCheck++;
             }
+
+            int listOfOnesCount = ListOfOnes.Count;
+            int listOfZerosCount = ListOfZeros.Count;
+
+            if (listOfOnesCount >= listOfZerosCount) {
+                Console.WriteLine("1's won");
+                oxygenRatingArray = ListOfOnes.ToArray();
+            } else {
+                Console.WriteLine("0's won");
+                oxygenRatingArray = ListOfZeros.ToArray();
+            }
+
+            indexToCheck++;
         }
 
         return 1;
