@@ -79,4 +79,36 @@ public static class SubmarineCalculator
 
         return finalPosition;
     }
+
+    public static int CalculateOxygenGeneratorRating(string[] diagnosticReport) {
+        string[] oxygenRatingArray = diagnosticReport;
+
+        while (oxygenRatingArray.Length > 1) {
+            List<string> ListOfOnes = new List<string>();
+            List<string> ListOfZeros = new List<string>();
+
+            int indexToCheck = 0;
+
+            foreach(string row in oxygenRatingArray) {
+                if (row[indexToCheck] == 1) {
+                    ListOfOnes.Add(row);
+                } else {
+                    ListOfZeros.Add(row);
+                }
+
+                int listOfOnesCount = ListOfOnes.Count;
+                int listOfZerosCount = ListOfZeros.Count;
+
+                if (listOfOnesCount >= listOfZerosCount) {
+                    oxygenRatingArray = ListOfOnes.ToArray();
+                } else {
+                    oxygenRatingArray = ListOfZeros.ToArray();
+                }
+
+                indexToCheck++;
+            }
+        }
+
+        return 1;
+    }
 }

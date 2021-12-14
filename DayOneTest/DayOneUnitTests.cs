@@ -178,4 +178,16 @@ public class DayOneUnitTests
         int actual = totalx * totaly;
         Assert.AreEqual(expected, actual);
     }
+
+    [TestMethod]
+    public void CalculateOxygenGeneratorRatingCalculatesExpectedValue() 
+    {
+        string[] input = {
+            "00100","11110","10110","10111","10101","01111","00111","11100","10000","11001","00010","01010"
+        };
+
+        int expected = 23;
+        int actual = SubmarineCalculator.CalculateOxygenGeneratorRating(input);
+        Assert.AreEqual(expected, actual);
+    }
 }
