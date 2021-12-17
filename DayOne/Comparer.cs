@@ -80,20 +80,22 @@ public static class SubmarineCalculator
         return finalPosition;
     }
 
-    public static int CalculateOxygenGeneratorRating(string[] diagnosticReport) {
-        string[] oxygenRatingArray = diagnosticReport;
-        int indexToCheck = 0;
-        int lengthToNotExceed = oxygenRatingArray.FirstOrDefault().Length;
+    public enum Rating {
+        C02Scrubber = 0,
+        OxygenGenerator = 1
+    }
 
-        while (oxygenRatingArray.Length > 1 && indexToCheck < lengthToNotExceed) {
+    public static int CalculateRating(string[] diagnosticReport, Rating targetRating) {
+        string[] ratingArray = diagnosticReport;
+        int indexToCheck = 0;
+        int lengthToNotExceed = ratingArray.FirstOrDefault().Length;
+
+        while (ratingArray.Length > 1 && indexToCheck < lengthToNotExceed) {
             List<string> ListOfOnes = new List<string>();
             List<string> ListOfZeros = new List<string>();
 
-            Console.WriteLine($"Using index {indexToCheck} to check");
-
-            foreach(string row in oxygenRatingArray) {
-                Console.WriteLine(row);
-                if (row[indexToCheck].ToString() == "1") {
+            foreach(string row in ratingArray) {
+                if (row[indexToCheck].ToString() == Rating.OxygenGenerator.GetHashCode().ToString()) {
                     ListOfOnes.Add(row);
                 } else {
                     ListOfZeros.Add(row);
@@ -103,21 +105,27 @@ public static class SubmarineCalculator
             int listOfOnesCount = ListOfOnes.Count;
             int listOfZerosCount = ListOfZeros.Count;
 
-            if (listOfOnesCount >= listOfZerosCount) {
-                Console.WriteLine("1's won");
-                oxygenRatingArray = ListOfOnes.ToArray();
+            if (targetRating == Rating.OxygenGenerator) {
+                if (listOfOnesCount >= listOfZerosCount) {
+                    ratingArray = ListOfOnes.ToArray();
+                } else {
+                    ratingArray = ListOfZeros.ToArray();
+                }
             } else {
-                Console.WriteLine("0's won");
-                oxygenRatingArray = ListOfZeros.ToArray();
+                if (listOfOnesCount < listOfZerosCount) {
+                    ratingArray = ListOfOnes.ToArray();
+                } else {
+                    ratingArray = ListOfZeros.ToArray();
+                }
             }
 
             indexToCheck++;
         }
 
-        string oxygenRatingString = oxygenRatingArray.FirstOrDefault();
+        string ratingString = ratingArray.FirstOrDefault();
 
-        int oxygenRatingInt = Convert.ToInt32(oxygenRatingString,2);
+        int ratingInt = Convert.ToInt32(ratingString,2);
         
-        return oxygenRatingInt;
+        return ratingInt;
     }
 }
