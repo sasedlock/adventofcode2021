@@ -93,7 +93,7 @@ public static class SubmarineCalculator
 
             foreach(string row in oxygenRatingArray) {
                 Console.WriteLine(row);
-                if (row[indexToCheck] == 1) {
+                if (row[indexToCheck].ToString() == "1") {
                     ListOfOnes.Add(row);
                 } else {
                     ListOfZeros.Add(row);
@@ -114,6 +114,10 @@ public static class SubmarineCalculator
             indexToCheck++;
         }
 
-        return 1;
+        string oxygenRatingString = oxygenRatingArray.FirstOrDefault();
+
+        int oxygenRatingInt = Convert.ToInt32(oxygenRatingString,2);
+        
+        return oxygenRatingInt;
     }
 }
